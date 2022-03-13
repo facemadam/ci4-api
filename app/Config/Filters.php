@@ -38,6 +38,7 @@ class Filters extends BaseConfig
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
+            'corsfilter',
         ],
         'after' => [
             'toolbar',
@@ -66,9 +67,5 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [
-        'corsfilter' => [
-            'before' => ['api/*'],
-        ],
-    ];
+    public $filters = [];
 }

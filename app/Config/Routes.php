@@ -31,11 +31,30 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->group('api', function ($routes) {
-    $routes->get('users', 'User::index', ['filter' => 'authfilter']);
-    $routes->post('register', 'User::register');
-    $routes->post('login', 'User::login');
-});
+
+// Users
+$routes->get('users', 'Users::index', ['filter' => 'authfilter']);
+$routes->get('users/(:segment)', 'Users::show/$1', ['filter' => 'authfilter']);
+$routes->get('users/(:segment)/edit', 'Users::edit/$1', [
+    'filter' => 'authfilter',
+]);
+$routes->get('users/new', 'Users::new', ['filter' => 'authfilter']);
+$routes->post('users', 'Users::create');
+$routes->post('users/(:segment)', 'Users::update/$1', [
+    'filter' => 'authfilter',
+]);
+$routes->put('users/(:segment)', 'Users::update/$1', [
+    'filter' => 'authfilter',
+]);
+$routes->patch('users/(:segment)', 'Users::update/$1', [
+    'filter' => 'authfilter',
+]);
+$routes->delete('users/(:segment)', 'Users::delete/$1', [
+    'filter' => 'authfilter',
+]);
+
+// AuthJwt
+$routes->post('auth/jwt', 'AuthJwt::create');
 
 /*
  * --------------------------------------------------------------------
