@@ -40,9 +40,6 @@ $routes->get('users/(:segment)/edit', 'Users::edit/$1', [
 ]);
 $routes->get('users/new', 'Users::new', ['filter' => 'authfilter']);
 $routes->post('users', 'Users::create');
-$routes->post('users/(:segment)', 'Users::update/$1', [
-    'filter' => 'authfilter',
-]);
 $routes->put('users/(:segment)', 'Users::update/$1', [
     'filter' => 'authfilter',
 ]);
